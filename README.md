@@ -1,6 +1,6 @@
 # About
 
-This is an example of how to combine Flet and FastAPI for complex applications which require both an API and a user interface. In this architecture, the API and the user interface are defined in a single app, while being clearly separated. As a result, the back end and the front end can be published all in one.
+This is an example of how to combine Flet and FastAPI for complex applications which require both an API and a user interface. In this architecture, the API and the user interface are defined in a single app, while being clearly separated. As a result, the back end and the front end can be implemented and published all in one.
 
 When using FastAPI to publish Flet Apps, the Python code is running on the server side and the browser is only displaying it. As a result, the Flet app can access the API internally as a function and doesn't need HTTP requests to communicate with the server.
 
@@ -21,6 +21,24 @@ async def about():
 
 ```python
 self.api['get_value']()
+```
+
+
+
+### Serving a Flet App from FastAPI
+
+```python
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await flet_fastapi.app_manager.start()
+    yield
+    await flet_fastapi.app_manager.shutdown()
+
+
+async def main(page: ft.Page):
+    await gui.init(page, cfg, api.get())
+
+app.mount(f'{path}/', flet_fastapi.app(main))
 ```
 
 
@@ -120,8 +138,15 @@ The app will be available at `https://example.com/flet-fastapi-example/`
 
 
 
-# Resources:
+# Resources
 
 Flet documentation
 
 - https://flet.dev/docs/guides/python/deploying-web-app/running-flet-with-fastapi/
+- https://flet.dev/docs/guides/python/async-apps/
+
+
+
+Dockup
+
+- https://github.com/flokapi/dockup

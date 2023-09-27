@@ -2,4 +2,3 @@ fastapi>=0.101.1
 uvicorn>=0.23.2
 flet>=0.10.1
 flet_fastapi>=0.10.1
-requests
