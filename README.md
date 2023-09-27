@@ -4,6 +4,8 @@ This is an example of how to combine Flet and FastAPI for complex applications w
 
 When using FastAPI to publish Flet Apps, the Python code is running on the server side and the browser is only displaying it. As a result, the Flet app can access the API internally as a function and doesn't need HTTP requests to communicate with the server.
 
+
+
 # The Code
 
 ### Accessing to API functions from the Flet GUI
