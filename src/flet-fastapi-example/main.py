@@ -29,7 +29,7 @@ counter = 0
 
 @api.register
 @app.get(f'{path}/get-value')
-async def about():
+async def get_value():
     return {'message': f'Counter value is currently {counter}'}
 
 

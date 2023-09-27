@@ -10,20 +10,26 @@ When using FastAPI to publish Flet Apps, the Python code is running on the serve
 
 ### Accessing to API functions from the Flet GUI
 
-Each function used by the API can be registered using the  `@api.register` decorator and sent to to the Flet GUI
+Each function used by the API can be registered using the  `@api.register` decorator
 
 ```python
 @api.register
-@app.get(f'{path}/get-value')
-async def about():
-    return {'message': f'Counter value is currently {counter}'}
+@app.get(f'{path}/set-value')
+async def set_value(value: int):
+    global counter
+    counter = value
+    return {'message': f'Updated counter value to {value}'}
 ```
 
 `api.get()` will then produce a dictionary of functions which is passed over to the Flet GUI when creating it.
 
+The Flet app can then save the API functions dictionary as an attribute and make a call to the API whenever needed.
+
 ```python
-self.api['get_value']()
+await self.api['set_value'](30)
 ```
+
+This is equivalent to `https://example.com/flet-fastapi-example/set-value?value=30`
 
 
 
@@ -51,7 +57,7 @@ The code also shows how to create idle functions both in the API (`main.py`) and
 
 Please note the difference:
 
-- The API idle function runs only once, because there is only one instance of the API
+- There is only one API idle function running, because there is only one instance of the API
 - Each Flet App instance (opened Flet Application) has its own idle function
 
 
