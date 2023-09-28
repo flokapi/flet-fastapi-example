@@ -51,14 +51,14 @@ app.mount(f'{path}/', flet_fastapi.app(main))
 
 
 
-### Idle functions
+### Loop functions
 
-The code also shows how to create idle functions both in the API (`main.py`) and in the Flet App (`gui.py`)
+The code also shows how to create loop functions both in the API (`main.py`) and in the Flet App (`gui.py`)
 
 Please note the difference:
 
-- There is only one API idle function running, because there is only one instance of the API
-- Each Flet App instance (opened Flet Application) has its own idle function
+- There is only one API loop function running, because there is only one instance of the API
+- Each Flet App instance (opened Flet Application) has its own loop function
 
 
 
