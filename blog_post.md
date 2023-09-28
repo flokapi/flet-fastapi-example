@@ -63,7 +63,7 @@ async def lifespan(app: FastAPI):
 
 
 async def main(page: ft.Page):
-    await gui.init(page, cfg, api.get())
+    await gui.init(page, api.get())
 
 app.mount('/', flet_fastapi.app(main))
 ```
@@ -96,7 +96,7 @@ uvicorn main:app --reload --port 8005
 
 The app will be available at `localhost:8005/`.
 
-The app will reload itself automatically every time you save the code.
+It will reload itself automatically every time you save the code.
 
 
 
