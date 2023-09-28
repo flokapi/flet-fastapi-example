@@ -1,5 +1,3 @@
-For an example without Dockup or an API request counter, check the other branches.
-
 # About
 
 This is an example of how to combine Flet and FastAPI for complex applications which require both an API and a user interface. In this architecture, the API and the user interface are defined in a single app, while being clearly separated. As a result, the back end and the front end can be implemented and published all in one.
