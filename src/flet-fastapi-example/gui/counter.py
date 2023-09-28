@@ -13,7 +13,7 @@ class RequestCounter(ft.UserControl):
         self.text.value = f'Request Count: {count}'
         await self.update_async()
 
-    async def idle(self):
+    async def loop(self):
         while True:
             await self.update_count()
             await asyncio.sleep(0.1)
