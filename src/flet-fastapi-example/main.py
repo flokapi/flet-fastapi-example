@@ -12,7 +12,7 @@ import api
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await flet_fastapi.app_manager.start()
-    asyncio.create_task(idle())
+    asyncio.create_task(loop())
     yield
     await flet_fastapi.app_manager.shutdown()
 
@@ -39,7 +39,7 @@ async def set_value(value: int):
     return {'message': f'Updated counter value to {value}'}
 
 
-async def idle():
+async def loop():
     while True:
         global counter
         counter -= 1
