@@ -1,11 +1,11 @@
 import flet as ft
+import asyncio
 
 
 
 class Counter(ft.UserControl):
-    def __init__(self, cfg, api):
+    def __init__(self, api):
         super().__init__()
-        self.cfg = cfg
         self.api = api
 
     async def minus(self):
@@ -20,7 +20,9 @@ class Counter(ft.UserControl):
         await self.api['set_value'](int(self.txt_number.value))
 
     async def idle(self):
-        await self.plus()
+        while True:
+            await self.plus()
+            await asyncio.sleep(5)
 
     def build(self):
         async def minus_click(e):

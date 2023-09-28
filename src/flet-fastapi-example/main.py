@@ -19,8 +19,6 @@ async def lifespan(app: FastAPI):
 
 cfg = yaml.safe_load(open('dockup.yml').read())
 path = cfg['path']
-name = cfg['name']
-
 
 app = FastAPI(lifespan=lifespan)
 
@@ -49,6 +47,6 @@ async def idle():
 
 
 async def main(page: ft.Page):
-    await gui.init(page, cfg, api.get())
+    await gui.init(page, api.get())
 
 app.mount(f'{path}/', flet_fastapi.app(main))
