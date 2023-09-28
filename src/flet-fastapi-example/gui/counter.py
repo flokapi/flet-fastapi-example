@@ -19,7 +19,7 @@ class Counter(ft.UserControl):
     async def publish(self):
         await self.api['set_value'](int(self.txt_number.value))
 
-    async def idle(self):
+    async def loop(self):
         while True:
             await self.plus()
             await asyncio.sleep(5)
