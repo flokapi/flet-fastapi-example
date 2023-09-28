@@ -29,7 +29,7 @@ The Flet app can then save the API functions dictionary as an attribute and make
 await self.api['set_value'](30)
 ```
 
-This is equivalent to `https://example.com/flet-fastapi-example/set-value?value=30`
+This is equivalent to `https://example.com/counter-dockup/set-value?value=30`
 
 
 
@@ -75,8 +75,8 @@ The following files are required:
     - example
 
         ```
-        name: flet-fastapi-example
-        path: /flet-fastapi-example
+        name: counter-dockup
+        path: /counter-dockup
         type: flet_abs
         ```
 
@@ -91,11 +91,11 @@ The following files are required:
 ## Launch the app in development mode
 
 ```
-cd src/flet-fastapi-example
+cd apps/counter-dockup
 uvicorn main:app --reload --port 8004
 ```
 
-The app will be available at `localhost:8004/flet-fastapi-example/`.
+The app will be available at `localhost:8004/counter-dockup/`.
 
 The app will reload itself automatically every time you save the code.
 
@@ -118,12 +118,12 @@ Check https://github.com/flokapi/dockup for the installation
 Locally
 
 ```
-cd src
-tar -czf flet-fastapi-example.tar.gz flet-fastapi-example
-python3 -m dockup install flet-fastapi-example.tar.gz
+cd apps
+tar -czf counter-dockup.tar.gz counter-dockup
+python3 -m dockup install counter-dockup.tar.gz
 ```
 
-The app will be available at `http://localhost/flet-fastapi-example/`
+The app will be available at `http://localhost/counter-dockup/`
 
 
 
@@ -132,17 +132,17 @@ The app will be available at `http://localhost/flet-fastapi-example/`
 Locally
 
 ```
-cd src
-tar -czf flet-fastapi-example.tar.gz flet-fastapi-example
+cd apps
+tar -czf counter-dockup.tar.gz counter-dockup
 ```
 
 On your server, once the the archive has been copied
 
 ```
-python3 -m dockup install flet-fastapi-example.tar.gz
+python3 -m dockup install counter-dockup.tar.gz
 ```
 
-The app will be available at `https://example.com/flet-fastapi-example/`
+The app will be available at `https://example.com/counter-dockup/`
 
 
 
