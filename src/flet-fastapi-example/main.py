@@ -20,18 +20,16 @@ app = FastAPI(lifespan=lifespan)
 counter = 0
 
 
-@api.register
-@app.get('/get-value')
+@app.get('/hello')
 async def get_value():
-    return {'message': f'Counter value is currently {counter}'}
+    global counter
+    counter += 1
+    return {'message': 'Hi'}
 
 
 @api.register
-@app.get('/set-value')
-async def set_value(value: int):
-    global counter
-    counter = value
-    return {'message': f'Updated counter value to {value}'}
+async def get_count():
+    return counter
 
 
 async def main(page: ft.Page):
