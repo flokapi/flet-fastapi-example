@@ -53,12 +53,23 @@ app.mount(f'{path}/', flet_fastapi.app(main))
 
 ### Loop functions
 
-The code also shows how to create loop functions both in the API (`main.py`) and in the Flet App (`gui.py`)
+A loop function in the GUI can be created using `asyncio.create_task` .
 
-Please note the difference:
+This can be done both
 
-- There is only one API loop function running, because there is only one instance of the API
-- Each Flet App instance (opened Flet Application) has its own loop function
+- in the API (`main.py`)
+- in the Flet App (`gui.py`), each Flet App instance (opened Flet Application) running it's own loop function
+
+
+
+In `gui/gui.py`:
+
+```python
+async def init(page, api):
+    counter = Counter(api)
+    await page.add_async(counter)
+    await asyncio.create_task(counter.loop())
+```
 
 
 

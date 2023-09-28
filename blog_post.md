@@ -27,6 +27,8 @@ When the `Publish` button is pressed, the value of the counter will be set in th
 
 Each function used by the API can be registered using the  `@api.register` decorator
 
+In `main.py`:
+
 ```python
 @api.register
 @app.get('/set-value')
@@ -50,6 +52,8 @@ This is equivalent to `http://localhost:8005/set-value?value=30`
 
 ### Serving a Flet App from FastAPI
 
+In `main.py`:
+
 ```python
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -68,7 +72,18 @@ app.mount('/', flet_fastapi.app(main))
 
 ### Loop functions
 
-The code also shows how to create loop functions both in the Flet App (`gui.py`)
+A loop function in the GUI can be created using `asyncio.create_task` 
+
+In `gui/gui.py`:
+
+```python
+async def init(page, api):
+    counter = Counter(api)
+    await page.add_async(counter)
+    await asyncio.create_task(counter.loop())
+```
+
+
 
 
 
